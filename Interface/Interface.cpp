@@ -2,6 +2,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <algorithm>
 #include <iostream>
+#include <cstring>
 #include <fstream>
 #include <vector>
 #include <list>
