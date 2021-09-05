@@ -1,0 +1,5 @@
+# Output directory
+bin/
+
+# Exclude vim swap files
+*.swp
