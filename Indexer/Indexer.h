@@ -6,7 +6,7 @@
 #include <string>
 #include <fstream>
 #include <sstream>
-#include <sys\stat.h>
+#include <sys/stat.h>
 #include <filesystem>
 
 #include "hash.h"

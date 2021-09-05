@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <cstdlib>
+#include <cstring>
 #include <string>
 #include "Indexer.h"
 //#include "DocumentIDManager.h"

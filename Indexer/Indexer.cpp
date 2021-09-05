@@ -16,12 +16,12 @@ Indexer::Indexer()
 	// Set up inverted index
 	struct stat info;
 	if (stat(INVERTED_INDEX_STORAGE_DIRECTORY.c_str(), &info) != 0) {
-		experimental::filesystem::create_directories(INVERTED_INDEX_STORAGE_DIRECTORY);
+		filesystem::create_directories(INVERTED_INDEX_STORAGE_DIRECTORY);
 	}
 
 	// Set up forward index
 	if (stat(FORWARD_INDEX_STORAGE_DIRECTORY.c_str(), &info) != 0) {
-		experimental::filesystem::create_directories(FORWARD_INDEX_STORAGE_DIRECTORY);
+		filesystem::create_directories(FORWARD_INDEX_STORAGE_DIRECTORY);
 	}
 }
 
@@ -69,7 +69,7 @@ string Indexer::index(string& document_file_name)
 	}
 
 	char buffer[20] = { 0 };
-	ofstream forward_index_output_file(FORWARD_INDEX_STORAGE_DIRECTORY + string(_itoa(document_id_manager.getNewDocumentID(document_file_name), buffer, 10)));
+	ofstream forward_index_output_file(FORWARD_INDEX_STORAGE_DIRECTORY + to_string(document_id_manager.getNewDocumentID(document_file_name)));
 
 	for (auto each_word_id : word_map) {
 		forward_index_output_file << each_word_id.first << " ";
@@ -89,7 +89,7 @@ void Indexer::computeInvertedIndex()
 
 	for (unsigned int i = 1; i <= document_id_manager.getNumberOfDocuments(); ++i)
 	{
-		ifstream forward_index(FORWARD_INDEX_STORAGE_DIRECTORY + _itoa(i, buffer, 10));
+		ifstream forward_index(FORWARD_INDEX_STORAGE_DIRECTORY + to_string(i));
 
 		unsigned int word_id, count;
 		string word_list, word;
@@ -105,7 +105,7 @@ void Indexer::computeInvertedIndex()
 				// Append entry to the doc list
 				fstream inverted_index(INVERTED_INDEX_STORAGE_DIRECTORY + word, ios::in | ios::out | ios::app);
 
-				inverted_index << _itoa(i, buffer, 10) << " " << count << endl;
+				inverted_index << to_string(i) << " " << count << endl;
 				inverted_index.close();
 
 			} while (!words_stream.peek() == ifstream::traits_type::eof());

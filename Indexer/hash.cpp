@@ -23,7 +23,7 @@ unsigned long long int power(unsigned long long int x, unsigned long long int y,
 namespace indexer 
 {
 
-	size_t hash(std::string str)
+	unsigned int hash(std::string str)
 	{
 		size_t hash_value = 0, prime = 1000000007;
 
