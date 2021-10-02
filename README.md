@@ -4,5 +4,10 @@ A simple search engine that searches for documents on local PC in a way similar 
 ## Build Instructions
 ```bash
 cd Desktop-Search-Engine
-make all
+cmake -S . -B ./bin
+cd bin
+make
 ```
+
+## Coding Style Used
+Google's C++ style guide is enforced through clang-format
