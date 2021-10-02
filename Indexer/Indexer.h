@@ -1,30 +1,28 @@
 #ifndef INDEXER_H
 #define INDEXER_H
 
-#include <map>
-#include <list>
-#include <string>
-#include <fstream>
-#include <sstream>
 #include <sys/stat.h>
 #include <filesystem>
+#include <fstream>
+#include <list>
+#include <map>
+#include <sstream>
+#include <string>
 
-#include "hash.h"
-#include "FileConstants.h"
 #include "DocumentIDManager.h"
+#include "FileConstants.h"
+#include "hash.h"
 
+class Indexer {
+ private:
+  DocumentIDManager document_id_manager;
 
-class Indexer
-{
-private:
-	DocumentIDManager document_id_manager;
+ public:
+  Indexer();
+  ~Indexer();
 
-public:
-	Indexer();
-	~Indexer();
-
-	std::string index(std::string&);	// Send absolute path
-	void computeInvertedIndex();
+  std::string index(std::string&);  // Send absolute path
+  void computeInvertedIndex();
 };
 
-#endif // !INDEXER_H
+#endif  // !INDEXER_H

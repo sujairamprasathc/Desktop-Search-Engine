@@ -3,12 +3,10 @@
 
 #include <string>
 
-namespace indexer
-{
+namespace indexer {
 
-	unsigned int hash(std::string);
+unsigned int hash(std::string);
 
 }
 
-#endif // !HASH_H
-
+#endif  // !HASH_H
